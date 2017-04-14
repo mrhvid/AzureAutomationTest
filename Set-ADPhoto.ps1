@@ -13,7 +13,7 @@ param
     $SamAccount = $File.BaseName
     $User = Get-ADUser -Identity $SamAccount
 
-    if($user) {
+    if($User) {
 
         $ThumbPath = '{0}\{1}-96px{2}' -f $File.Directory, $File.BaseName, $File.Extension
         .\Resize-File.ps1 -JpgFilePathPath $JpgFilePathPath -Height 96 -Width 96 -OutputPath $ThumbPath
