@@ -23,7 +23,7 @@ param
   [string]
   $OutputPath
 )
-
+  "Resizing $JpgFilePathPath"
   Add-Type -AssemblyName System.Drawing
 
   $OldImage = New-Object -TypeName System.Drawing.Bitmap -ArgumentList $JpgFilePath

@@ -8,6 +8,7 @@ param
 )
 
     Write-Verbose -Message  "This is SetAdPhoto and the path is: $JpgFilePathPath"
+    "This is SetAdPhoto and the path is: $JpgFilePathPath"
 
     $File = Get-ChildItem -Path $JpgFilePathPath
     $SamAccount = $File.BaseName
