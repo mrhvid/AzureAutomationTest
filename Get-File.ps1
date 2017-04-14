@@ -14,6 +14,6 @@ foreach($File in $ThumbnailFiles) {
   $NewPath = Move-Item -Path $File.FullName -Destination 'C:\temp\SetADPhoto\processing\' -Force -PassThru
 
   #Call next runbook
-  .\ADP-SetADPhoto.ps1 -path $NewPath.FullName
+  .\Set-ADPhoto.ps1 -Path $NewPath.FullName
   
 }

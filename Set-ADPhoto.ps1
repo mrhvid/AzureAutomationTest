@@ -1,32 +1,30 @@
 param
 (
-  # Path to folder containing square .jpg thumbnails
+  # Path to .jpg thumbnails
   [Parameter(Mandatory=$true)]
   [ValidateScript({Test-Path $_})]
   [String]
-  $Path
+  $JpgFilePathPath
 )
 
-whoami
-"This is SetAdPhoto and the path is: $Path"
 
-$File = Get-ChildItem -Path $Path
-$SamAccount = $File.BaseName
-$User = Get-ADUser -Identity $SamAccount
+    Write-Verbose -Message  "This is SetAdPhoto and the path is: $JpgFilePathPath"
+
+    $File = Get-ChildItem -Path $JpgFilePathPath
+    $SamAccount = $File.BaseName
+    $User = Get-ADUser -Identity $SamAccount
 
 
-if($user) {
+    if($user) {
 
-    [byte[]]$Picture = Get-Content $Path -Encoding byte
-    $User | Set-ADUser -Replace @{thumbnailphoto=$Picture} -Credential (Get-AutomationPSCredential -Name "hyper1LabAdmin")
+        [byte[]]$Picture = Get-Content $JpgFilePathPath -Encoding byte
+        $User | Set-ADUser -Replace @{thumbnailphoto=$Picture} -Credential (Get-AutomationPSCredential -Name "hyper1LabAdmin")
 
-    "File $File written to $($User.Name)"
+        "File $File written to $($User.Name)"
 
-} else {
+    } else {
 
-    # No user found
-    Write-Debug "no user found in AD named $SamAccount"
+        # No user found
+        Write-Debug "no user found in AD named $SamAccount"
 
-}
-#Edited via Azure
-#Edited in VS Code
+    }
