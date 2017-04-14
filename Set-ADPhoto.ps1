@@ -28,4 +28,5 @@ if($user) {
     Write-Debug "no user found in AD named $SamAccount"
 
 }
-#Edited via Azure 
+#Edited via Azure
+#Edited in VS Code
