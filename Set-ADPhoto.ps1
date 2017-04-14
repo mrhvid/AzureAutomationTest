@@ -1,6 +1,6 @@
 param
 (
-  # Path to square .jpg thumbnails
+  # Path to folder containing square .jpg thumbnails
   [Parameter(Mandatory=$true)]
   [ValidateScript({Test-Path $_})]
   [String]
