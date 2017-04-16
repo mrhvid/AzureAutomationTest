@@ -42,4 +42,4 @@ param
 
   $OldImage.Dispose()
   $Bitmap.Dispose()
-  $NewImage.Dispose() 
+  $NewImage.Dispose()
