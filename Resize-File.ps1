@@ -4,7 +4,7 @@ param
   [Parameter(Mandatory=$true)]
   [ValidateScript({Test-Path $_})]
   [String]
-  $JpgFilePathPath,
+  $JpgFilePath,
 
   # Pixel height of output
   [Parameter(Mandatory=$true)]
@@ -23,7 +23,7 @@ param
   [string]
   $OutputPath
 )
-  "Resizing $JpgFilePathPath"
+  "Resizing $JpgFilePath"
   Add-Type -AssemblyName System.Drawing
 
   $OldImage = New-Object -TypeName System.Drawing.Bitmap -ArgumentList $JpgFilePath
