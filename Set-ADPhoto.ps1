@@ -4,20 +4,20 @@ param
   [Parameter(Mandatory=$true)]
   [ValidateScript({Test-Path $_})]
   [String]
-  $JpgFilePathPath
+  $JpgFilePath
 )
 
-    Write-Verbose -Message  "This is SetAdPhoto and the path is: $JpgFilePathPath"
-    "This is SetAdPhoto and the path is: $JpgFilePathPath"
+    Write-Verbose -Message  "This is SetAdPhoto and the path is: $JpgFilePath"
+    "This is SetAdPhoto and the path is: $JpgFilePath"
 
-    $File = Get-ChildItem -Path $JpgFilePathPath
+    $File = Get-ChildItem -Path $JpgFilePath
     $SamAccount = $File.BaseName
     $User = Get-ADUser -Identity $SamAccount
 
     if($User) {
 
         $ThumbPath = '{0}\{1}-96px{2}' -f $File.Directory, $File.BaseName, $File.Extension
-        .\Resize-File.ps1 -JpgFilePathPath $JpgFilePathPath -Height 96 -Width 96 -OutputPath $ThumbPath
+        .\Resize-File.ps1 -JpgFilePath $JpgFilePath -Height 96 -Width 96 -OutputPath $ThumbPath
 
         [byte[]]$Picture = Get-Content $ThumbPath -Encoding byte
         $User | Set-ADUser -Replace @{thumbnailphoto=$Picture} -Credential (Get-AutomationPSCredential -Name "hyper1LabAdmin")
