@@ -1,4 +1,4 @@
- param
+param
 (
   # Path to folder containing square .jpg thumbnails
   [Parameter(Mandatory=$true)]
@@ -14,6 +14,6 @@ foreach($File in $ThumbnailFiles) {
   $NewPath = Move-Item -Path $File.FullName -Destination 'C:\temp\SetADPhoto\processing\' -Force -PassThru
 
   #Call next runbook
-  .\Set-ADPhoto.ps1 -JpgFilePathPath $NewPath.FullName
+  .\Set-ADPhoto.ps1 -JpgFilePath $NewPath.FullName
   
 }
